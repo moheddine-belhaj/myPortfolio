@@ -64,7 +64,7 @@
 
 <script setup>
 import AOS from 'aos';
-import Resume from '../components/gResume.vue';
+import Resume from '../components/Resume.vue';
 onMounted(() => {
   AOS.init({
     duration: 1000,
