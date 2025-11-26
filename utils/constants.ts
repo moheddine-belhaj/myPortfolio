@@ -5,7 +5,7 @@ export const experience = [
     period: '2022 - Present',
     description: 'Developing modern web applications using Vue.js and Nuxt'
   }
-]
+];
 
 export const skills = [
   { name: 'Vue.js', level: 90 },
@@ -14,4 +14,4 @@ export const skills = [
   { name: 'CSS/Tailwind', level: 88 },
   { name: 'GSAP', level: 80 },
   { name: 'Three.js', level: 75 }
-]
+];

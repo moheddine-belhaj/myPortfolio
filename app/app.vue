@@ -5,6 +5,8 @@ import Hero from '../components/Hero.vue';
 import About from '../components/About.vue';
 import Contact from '../components/Contact.vue';
 import Resume from '../components/Resume.vue';
+import Technologies from '../components/Technologies.vue';
+import Hireme from '../components/Hireme.vue';
 
 onMounted(() => {
   AOS.init({
@@ -42,15 +44,17 @@ onMounted(() => {
 });
 </script>
 
-
 <template>
   <div>
     <NuxtLayout>
       <Hero />
       <About />
+      <Technologies />
+      <Hireme />
       <Resume />
       <Contact />
     </NuxtLayout>
   </div>
 </template>
 
+<style scoped></style>
