@@ -7,6 +7,7 @@ import Contact from '../components/Contact.vue';
 import Resume from '../components/Resume.vue';
 import Technologies from '../components/Technologies.vue';
 import Hireme from '../components/Hireme.vue';
+import Works from '../components/Works.vue';
 
 onMounted(() => {
   AOS.init({
@@ -51,6 +52,7 @@ onMounted(() => {
       <About />
       <Technologies />
       <Hireme />
+      <Works />
       <Resume />
       <Contact />
     </NuxtLayout>

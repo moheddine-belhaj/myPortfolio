@@ -1,6 +1,7 @@
 <script setup>
 import TypedText from './TypedText.vue';
 import scrollGif from '../assets/images/scroll.gif';
+import Button from './Button.vue';
 </script>
 <template>
   <section
@@ -25,11 +26,11 @@ import scrollGif from '../assets/images/scroll.gif';
           ]"
         />
       </p>
-      <button
-        class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors"
-      >
-        View My Work
-      </button>
+      <Button
+        label="View My Work"
+        href="https://github.com/moheddine-belhaj"
+        target="_blank"
+      />
     </div>
 
     <div
