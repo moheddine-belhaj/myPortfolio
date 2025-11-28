@@ -159,7 +159,6 @@ const handleMouseEnter = (event) => {
 
     animationInstance = gsap.timeline();
 
-
     animationInstance.to(nodes[0], {
       duration: 0.8,
       ease: 'elastic.out(1, 0.3)',
@@ -236,7 +235,6 @@ const handleClick = (event) => {
   }
 };
 
-
 onUnmounted(() => {
   stopAnimation();
 });
@@ -290,7 +288,6 @@ onUnmounted(() => {
   &:disabled {
     cursor: not-allowed;
     opacity: 0.6;
-    /* Lighter border when disabled: target the pseudo element border */
     &::before {
       border-color: rgba(255, 255, 255, 0.4);
     }

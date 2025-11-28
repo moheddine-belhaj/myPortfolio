@@ -3,7 +3,7 @@
     <div class="loading-content">
       <div class="glitch-container">
         <GlitchText
-          v-for="(text, index) in welcomeTexts" 
+          v-for="(text, index) in welcomeTexts"
           :key="text.language"
           :text="text.text"
           :class="{ active: currentTextIndex === index }"
@@ -15,7 +15,7 @@
           :glitchColor2="getGlitchColor(index, 2)"
         />
       </div>
-      
+
       <div class="loading-bar">
         <div class="loading-progress" :style="progressStyle"></div>
       </div>
@@ -30,7 +30,7 @@ import GlitchText from './GlitchText.vue';
 const props = defineProps({
   duration: {
     type: Number,
-    default: 4000 
+    default: 4000
   }
 });
 
@@ -43,9 +43,9 @@ const currentTextIndex = ref(0);
 const welcomeTexts = [
   { language: 'fr', text: 'Bienvenue' },
   { language: 'es', text: 'Bienvenido' },
-  { language: 'ar', text: 'أهلاً ' },   
-  { language: 'zh', text: '欢迎' },           
-  { language: 'de', text: 'Willkommen' },    
+  { language: 'ar', text: 'أهلاً ' },
+  { language: 'zh', text: '欢迎' },
+  { language: 'de', text: 'Willkommen' },
   { language: 'en', text: 'Welcome' }
 ];
 
@@ -65,24 +65,24 @@ const getGlitchColor = (index, layer) => {
     { color1: '#6A0572', color2: '#FFE66D' },
     { color1: '#4ECDC4', color2: '#FF6B6B' }
   ];
-  
+
   return layer === 1 ? colors[index].color1 : colors[index].color2;
 };
 
 const showTextSequence = () => {
   let index = 0;
-  
+
   const showNextText = () => {
     if (index < welcomeTexts.length) {
       currentTextIndex.value = index;
       index++;
-      
+
       if (index < welcomeTexts.length) {
-        setTimeout(showNextText, 600); 
+        setTimeout(showNextText, 600);
       }
     }
   };
-  
+
   showNextText();
 };
 
@@ -90,10 +90,10 @@ const startLoading = () => {
   const interval = 50;
   const steps = props.duration / interval;
   const increment = 100 / steps;
-  
+
   const timer = setInterval(() => {
     progress.value += increment;
-    
+
     if (progress.value >= 100) {
       clearInterval(timer);
       setTimeout(() => {
@@ -127,7 +127,7 @@ onMounted(() => {
 
 .loading-content {
   text-align: center;
-  color: #FAFAFA;
+  color: #fafafa;
 }
 
 .glitch-container {
@@ -169,13 +169,13 @@ onMounted(() => {
 .loading-progress {
   height: 100%;
   background: linear-gradient(
-    90deg, 
-    #FF6B6B, 
-    #FFE66D, 
-    #45B7D1, 
-    #FF9A8B, 
-    #6A0572, 
-    #4ECDC4
+    90deg,
+    #ff6b6b,
+    #ffe66d,
+    #45b7d1,
+    #ff9a8b,
+    #6a0572,
+    #4ecdc4
   );
   border-radius: 2px;
   transition: width 0.1s linear;
@@ -187,11 +187,11 @@ onMounted(() => {
     height: 100px;
     margin-bottom: 2rem;
   }
-  
+
   .glitch-text-item {
     font-size: 3rem !important;
   }
-  
+
   .loading-bar {
     width: 250px;
   }
@@ -202,23 +202,23 @@ onMounted(() => {
     height: 80px;
     margin-bottom: 1.5rem;
   }
-  
+
   .glitch-text-item {
-    font-size: 2.5rem !important; 
+    font-size: 2.5rem !important;
   }
-  
+
   .loading-bar {
     width: 200px;
   }
 }
 
-
-.glitch-text-item[data-language="ar"] {
+.glitch-text-item[data-language='ar'] {
   font-family: 'Arial', 'Segoe UI', sans-serif; /* Better Arabic font support */
 }
 
 /* Special styling for Chinese text */
-.glitch-text-item[data-language="zh"] {
-  font-family: 'Microsoft YaHei', 'SimHei', sans-serif; /* Better Chinese font support */
+.glitch-text-item[data-language='zh'] {
+  font-family:
+    'Microsoft YaHei', 'SimHei', sans-serif; /* Better Chinese font support */
 }
 </style>
