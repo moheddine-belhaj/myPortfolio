@@ -1,6 +1,7 @@
 <script setup>
-import { onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import AOS from 'aos';
+import LoadingScreen from '../components/LoadingScreen.vue';
 import Hero from '../components/Hero.vue';
 import About from '../components/About.vue';
 import Contact from '../components/Contact.vue';
@@ -9,7 +10,14 @@ import Technologies from '../components/Technologies.vue';
 import Hireme from '../components/Hireme.vue';
 import Works from '../components/Works.vue';
 
-onMounted(() => {
+const showMainContent = ref(false);
+
+const handleLoadingComplete = () => {
+  showMainContent.value = true;
+  initializeAOS();
+};
+
+const initializeAOS = () => {
   AOS.init({
     duration: 1000,
     once: false,
@@ -33,6 +41,7 @@ onMounted(() => {
     // eslint-disable-next-line no-undef
     window.__aosObserver = observer;
   }
+  
   onUnmounted(() => {
     try {
       observer.disconnect();
@@ -42,21 +51,49 @@ onMounted(() => {
       // ignore
     }
   });
-});
+};
 </script>
 
 <template>
   <div>
-    <NuxtLayout>
-      <Hero />
-      <About />
-      <Technologies />
-      <Hireme />
-      <Works />
-      <Resume />
-      <Contact />
-    </NuxtLayout>
+    <!-- Loading Screen -->
+    <LoadingScreen 
+      :duration="3000" 
+      @loading-complete="handleLoadingComplete" 
+    />
+    <div v-if="showMainContent">
+      <NuxtLayout>
+        <Hero />
+        <About />
+        <Technologies />
+        <Hireme />
+        <Works />
+        <Resume />
+        <Contact />
+      </NuxtLayout>
+    </div>
   </div>
 </template>
 
-<style scoped></style>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
